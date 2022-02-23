@@ -75,6 +75,7 @@ public class BoardController extends HttpServlet {
 		
 		//DAO 호출 필요
 		
+		
 		request.setAttribute("alist", alist);
 		RequestDispatcher rd = request.getRequestDispatcher("/board/list.jsp");
 		rd.forward(request, response);

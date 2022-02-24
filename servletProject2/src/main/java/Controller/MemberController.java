@@ -46,6 +46,8 @@ public class MemberController extends HttpServlet {
 	}
 	
 	private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//DAO ÀÛ¾÷
+		
 		ArrayList<BoardVO> alist = new ArrayList<>();
 		request.setAttribute("alist", alist);
 		RequestDispatcher rd = request.getRequestDispatcher("/member/list.jsp");

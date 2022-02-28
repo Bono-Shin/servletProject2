@@ -101,6 +101,9 @@ public class BoardController extends HttpServlet {
 		BoardDAO boardDAO = new BoardDAO();
 		alist = boardDAO.list(request, response);
 		
+		//el¹®
+		request.setAttribute("test","test");
+		
 		request.setAttribute("alist", alist);
 		RequestDispatcher rd = request.getRequestDispatcher("/board/list.jsp");
 		rd.forward(request, response);

@@ -5,7 +5,7 @@
 <%@ page import = "vo.*" %>
 
 <%
-	BoardVO vo = (BoardVO)request.getAttribute("vo");
+	//BoardVO vo = (BoardVO)request.getAttribute("vo");
 %>   
     
 <!DOCTYPE html>
@@ -20,19 +20,19 @@
 			<thead>
 				<tr>
 					<th>제목</th>
-					<th><input type="text" name="subject" value="<%=vo.getSubject() %>"></th>
+					<th><input type="text" name="subject" value="${vo.subject }"></th>
 					<th>작성자</th>
-					<th><input type="text" name="writer" value="<%=vo.getWriter() %>"></th>
+					<th><input type="text" name="writer" value="${vo.writer }"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th>내용</th>
-					<td colspan="3"><input type="text" name="content" value="<%=vo.getContent() %>"></td>
+					<td colspan="3"><input type="text" name="content" value="${vo.content }"></td>
 				</tr>
 			</tbody>
 		</table>
-		<input type="hidden" name="bidx" value="<%=vo.getBidx() %>">
+		<input type="hidden" name="bidx" value="${vo.bidx }">
 		<input type="submit" value="저장">
 	</form>
 </body>

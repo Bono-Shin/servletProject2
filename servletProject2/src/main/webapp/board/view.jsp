@@ -5,7 +5,7 @@
 <%@ page import = "vo.*" %>
 
 <%
-	BoardVO vo = (BoardVO)request.getAttribute("vo");
+	//BoardVO vo = (BoardVO)request.getAttribute("vo");
 %>
    
 <!DOCTYPE html>
@@ -27,26 +27,26 @@
 			<thead>
 				<tr>
 					<th>제목</th>
-					<th><%=vo.getSubject() %></th>
+					<th>${vo.subject }</th>
 					<th>작성자</th>
-					<th><%=vo.getWriter() %></th>
+					<th>${vo.writer }</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th>내용</th>
-					<td colspan="3"><%=vo.getContent() %></td>
+					<td colspan="3">${vo.content }</td>
 				</tr>
 			</tbody>
 		</table>
 	<button onclick="modifyOK()">수정</button>
 	<button onclick="delfn()">삭제</button>
 	<form method="post">
-		<input type="hidden" name="bidx" value="<%=vo.getBidx()%>">
+		<input type="hidden" name="bidx" value="${vo.bidx }">
 	</form>
 	<script>
 		function modifyOK(){
-			location.href="viewModify.do?bidx=<%=vo.getBidx()%>";
+			location.href="viewModify.do?bidx=${vo.bidx }";
 		}
 	</script>
 </body>

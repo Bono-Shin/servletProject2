@@ -3,9 +3,13 @@
 
 <%@ page import = "java.util.*" %>
 <%@ page import = "vo.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	ArrayList<BoardVO> alist = (ArrayList<BoardVO>)request.getAttribute("alist");
+	//ArrayList<BoardVO> alist = (ArrayList<BoardVO>)request.getAttribute("alist");
+
+	//el문 중복시키기 - page가 최종이므로 testpage가 출력된다.
+	pageContext.setAttribute("test","testpage");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +18,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>board 목록</h2>
+	${login.name }님 환영합니다.
+	<h2>board 목록 ${test }</h2>
+	
 	<table border="1">
 		<thead>
 			<tr>
@@ -23,15 +29,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
-				for(int i=0; i<alist.size(); i++){ 
-					BoardVO vo = alist.get(i);
-			%>
+			<c:forEach items="${alist}" var="vo">
 			<tr>
-				<td><a href="view.do?bidx=<%=vo.getBidx()%>"><%=vo.getSubject() %></a></td>
-				<td><%=vo.getWriter() %></td>
+				<td><a href="view.do?bidx=${vo.bidx }">${vo.subject }</a></td>
+				<td>${vo.writer }</td>
 			</tr>
-			<%} %>
+			</c:forEach>
 		</tbody>
 	</table>
 	<button onclick="location.href='insert.do'">등록</button>

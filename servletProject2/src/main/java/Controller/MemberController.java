@@ -8,8 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import vo.BoardVO;
+import vo.MemberVO;
 
 /**
  * Servlet implementation class MemberController
@@ -34,6 +36,8 @@ public class MemberController extends HttpServlet {
 		
 		if(commands[1].equals("list.do")) {
 			list(request, response);
+		}else if(commands[1].equals("login.do")) {
+			login(request, response);
 		}
 	}
 
@@ -52,6 +56,22 @@ public class MemberController extends HttpServlet {
 		request.setAttribute("alist", alist);
 		RequestDispatcher rd = request.getRequestDispatcher("/member/list.jsp");
 		rd.forward(request, response);
+		
+	}
+	
+	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		MemberVO vo = new MemberVO();
+		
+		vo.setId("tester");
+		vo.setMidx(1);
+		vo.setName("ев╫╨ем");
+	
+		HttpSession session = request.getSession();
+		session.setAttribute("login", vo);
+		
+		response.sendRedirect(request.getContextPath()+"/board/list.do");
+		
 		
 	}
 }
